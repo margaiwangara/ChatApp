@@ -55,7 +55,7 @@ if(isset($_POST['signup_submit']))
                 {
                    //set sessions
                    $_SESSION['USERNAME'] = $username;
-                   $_SESSION['EMAIL'] = $email; 
+                   $_SESSION['EMAIL'] = $email;
 
                    //redirection
                    header("Location:home.php");
