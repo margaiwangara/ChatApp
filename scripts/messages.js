@@ -7,15 +7,15 @@ $(document).ready(function()
 
             success:function(data)
             {
-                
+                //sender = [];
                 var sender = data.sender;
                 var receiver = data.receiver;
                 var message = data.message;
 
-                alert(sender);
-                for(var i=0;i<message.Length;i++)
+                //alert(sender);
+                for(var i=0;i<10;i++)
                 {
-                    $("#user_messages").html("<tr><th>"+sender[i]+"</th><th>"+receiver[i]+"</th></tr><tr><td>"+message[i]+"</td></tr>")
+                    $("#user_messages").html("<tr><th>"+data.sender+"</th><th>"+data.receiver+"</th></tr><tr><td>"+data.message+"</td></tr>")
                 }
             },
             error: function (xhr, ajaxOptions, thrownError)
