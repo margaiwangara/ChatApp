@@ -11,6 +11,10 @@
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
+    <!--custom js-->
+    <script src="scripts/message.js"></script>
+    <script src="scripts/messages.js"></script>
+
 </head>
 <body>
     <nav class="navbar navbar-inverse">

@@ -1,24 +1,25 @@
 $(document).ready(function()
 {
-    $("#").on('click',function(e)
+    $("#messagesubmit").on('click',function(e)
     {
         e.preventDefault();
         
         $.ajax({
-            url:'',
+            url:'sendmessage.php',
             type:'POST',
-            dataType:'json',
-            data:$("#").serialize(),
+            dataType:'html',
+            data: $("#message-form").serialize(),
 
             success:function(data)
             {
-
+                alert(data);
             },
-            error:function(x, y, z)
+            error: function (xhr, ajaxOptions, thrownError)
             {
-                
+                alert(xhr.status);
             }
-
         });
     });
+
+    
 });

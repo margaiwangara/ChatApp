@@ -18,12 +18,18 @@ include_once 'layout.php';
                     <div class="row">
                         <div class="col-md-4"></div>
                         <div class="col-md-8">
-                            <form action="" method="post">
+                            <div>
+                                <table class="table table-condensed" id="user_messages">
+                                    
+                                </table>
+                            </div>
+                            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']."?id=".$_GET['id']);?>" method="post" id="message-form">
                                 <div class="form-group">
-                                    <textarea name="message" id="message" rows="10" class="form-control" style="resize: none;"></textarea>
+                                    <input type="hidden" value="<?php echo htmlspecialchars($_GET['id']);?>" name="receiver" id="message-receiver">
+                                    <textarea name="message" id="message" rows="5" class="form-control" style="resize: none;"></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" name="send_message" id="message-submit" class="btn btn-primary">Send Message</button>
+                                    <button type="submit" name="send_message" id="messagesubmit" class="btn btn-primary">Send Message</button>
                                 </div>
                             </form>
                         </div>
