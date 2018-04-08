@@ -51,20 +51,21 @@ if(isset($_POST['signup_submit']))
                 //insert into db
                 $query = mysqli_query($conn, "INSERT INTO users(username,email,password) VALUES('$username','$email','$password')") or trigger_error("Signup not successfull");
 
-                if($query)
+                if(mysqli_affected_rows($conn) == 1)
                 {
                    //set sessions
                    $_SESSION['USERNAME'] = $username;
                    $_SESSION['EMAIL'] = $email;
+                   $_SESSION['USER_ID'] = mysqli_insert_id($conn);
 
                    //redirection
                    header("Location:home.php");
                     
                    //success message
-                   $msg = "<span style='color: green;'>Registration Successful</span>"; 
+                   $msg = "<span class='text-success'>Registration Successful</span>"; 
                 }
                 else
-                    $msg = "<span style='color: red;'>Registration Failed</span>";
+                    $msg = "<span class='text-success'>Registration Failed</span>";
             }
             
         }

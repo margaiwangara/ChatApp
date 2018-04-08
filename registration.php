@@ -2,6 +2,8 @@
 
     //include signup script
     include_once 'signup.php';
+    //include login script
+    include_once 'login.php';
     //include layout script
     include_once 'layout.php';
 ?>
@@ -23,17 +25,20 @@
                         <h3><strong class="text-center">Log In</strong></h3>
                     </div>
                     <div class="panel-body">
-                        <form action="" method="post" novalidate>
+                        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post" novalidate>
                             <div class="form-group">
-                                <input type="text" name="user_identifier" id="user-identifier" placeholder="Username or Email" class="form-control" value="<?php if(isset($_POST['user_identifier'])) echo $_POST['username']; ?>">
+                                <input type="text" name="user_identifier" id="user-identifier" placeholder="Username or Email" class="form-control" value="<?php if(isset($_POST['user_identifier'])) echo $_POST['user_identifier']; ?>">
                             </div>
                             <div class="form-group">
                                 <input type="password" name="password" id="login-password" placeholder="Password" class="form-control">
                             </div>
                             <div class="form-group">
-                                <button class="btn btn-primary form-control" id="login-submit" type="submit">Log In</button>
+                                <button class="btn btn-primary form-control" name="login_submit" id="login-submit" type="submit">Log In</button>
                             </div>
                         </form>
+                        <div>
+                            <?php echo $lgmsg;?>
+                        </div>
                     </div>
                 </div>
                 </div>

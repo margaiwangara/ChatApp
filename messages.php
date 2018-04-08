@@ -6,6 +6,9 @@ session_start();
 include_once 'layout.php';
 
 ?>
+<!--custom js-->
+<script src="scripts/message.js"></script>
+<script src="scripts/messages.js"></script>
 <title>Messages</title>
 
 <div class="container">

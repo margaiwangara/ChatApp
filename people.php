@@ -11,7 +11,8 @@ $noOfPeople = 0;
 
 if(isset($_SESSION['USERNAME']))
     $user = $_SESSION['USERNAME'];
-
+else
+    $user = FALSE;
 $users = mysqli_query($conn, "SELECT * FROM users WHERE username != '$user'") or trigger_error("Couldn't get users");
 
 if(mysqli_num_rows($users) > 0)

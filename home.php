@@ -17,8 +17,6 @@ include_once 'people.php';
                 if(isset($_SESSION['USERNAME'])) 
                 {
                     echo "<span class='text-success'><strong>Welcome ".$_SESSION['USERNAME']."</strong></span>";
-                    //display logout option
-                    echo "<span class='pull-right'><a href='logout.php'>Log Out</a></span>";
                 }
                 else 
                     echo "Welcome Guest";
@@ -42,7 +40,7 @@ include_once 'people.php';
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach($ids as $key=>$id):if($username[$key] != $_SESSION['USERNAME']):?>
+                            <?php foreach($ids as $key=>$id):?>
                                 <tr>
                                     <td><?php echo $username[$key];?></td>
                                     <td><?php echo $email[$key];?></td>
@@ -50,7 +48,7 @@ include_once 'people.php';
                                     <td><button type="button" id="add-known" name="add_known" class="btn btn-success">Known</button></td>
                                     <td><a href="messages.php?id=<?php echo $id;?>" target="_blank" id="send-message" name="send_message" class="btn btn-primary">Send Message</a></td>
                                 </tr>
-                            <?php endif;endforeach;?>
+                            <?php endforeach;?>
                         </tbody>
                     </table>
                 </div>

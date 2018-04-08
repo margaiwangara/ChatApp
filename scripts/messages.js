@@ -7,16 +7,23 @@ $(document).ready(function()
 
             success:function(data)
             {
-                //sender = [];
+                sender = [];
                 var sender = data.sender;
                 var receiver = data.receiver;
                 var message = data.message;
 
-                //alert(sender);
-                for(var i=0;i<10;i++)
+                var holder;
+                $.each(message,function(key,value)
                 {
-                    $("#user_messages").html("<tr><th>"+data.sender+"</th><th>"+data.receiver+"</th></tr><tr><td>"+data.message+"</td></tr>")
-                }
+                    holder += "<tr><th>" + sender[key] + "</th><th>" + receiver[key] + "</th></tr><tr><td>" + value + "</td></tr>"
+                    $("#user_messages").html(holder);
+                    //alert(value+" "+sender[key]+" "+receiver[key]);
+                });
+                //alert(sender);
+                //for(var i=0;i<10;i++)
+                //{
+                //    $("#user_messages").html("<tr><th>"+sender[i]+"</th><th>"+receiver[i]+"</th></tr><tr><td>"+message[i]+"</td></tr>")
+                //}
             },
             error: function (xhr, ajaxOptions, thrownError)
             {

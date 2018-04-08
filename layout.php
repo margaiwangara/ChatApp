@@ -11,10 +11,6 @@
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    <!--custom js-->
-    <script src="scripts/message.js"></script>
-    <script src="scripts/messages.js"></script>
-
 </head>
 <body>
     <nav class="navbar navbar-inverse">
@@ -22,7 +18,17 @@
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">ChatApp</a>
             </div>
-            
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <?php 
+                        if(isset($_SESSION['USERNAME']))
+                            //display logout option
+                            echo "<a href='logout.php'>Log Out</a>";
+                        else
+                            echo "<a href='registration.php'>Login | Sign Up</a>";
+                    ?>
+                </li>
+            </ul>
         </div>
     </nav>
 
