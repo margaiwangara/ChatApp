@@ -25,7 +25,7 @@ if(isset($_POST['login_submit']))
             $login_data = mysqli_fetch_assoc($access);
 
             $id = $login_data['id'];
-            echo password_verify($password,$login_data['password']);
+            echo $login_data['password'];
             if(password_verify($password,$login_data['password']))
             {
                 //access account

@@ -32,5 +32,5 @@ $(document).ready(function()
         });
     }
 
-    setInterval(polling,100);
+    //setInterval(polling,100);
 });

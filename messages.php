@@ -26,9 +26,9 @@ include_once 'layout.php';
                                     
                                 </table>
                             </div>
-                            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']."?id=".$_GET['id']);?>" method="post" id="message-form">
+                            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']."?id=".$_GET['username']);?>" method="post" id="message-form">
                                 <div class="form-group">
-                                    <input type="hidden" value="<?php echo htmlspecialchars($_GET['id']);?>" name="receiver" id="message-receiver">
+                                    <input type="hidden" value="<?php echo htmlspecialchars($_GET['username']);?>" name="receiver" id="message-receiver">
                                     <textarea name="message" id="message" rows="5" class="form-control" style="resize: none;"></textarea>
                                 </div>
                                 <div class="form-group">

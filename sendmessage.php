@@ -17,7 +17,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     $message = validate($_POST['message']);
 
     //some regex
-    if(!preg_match("/^[1-9][0-9]{0,10}$/",$receiver))
+    if(!preg_match("/^[A-Za-z0-9]{0,10}$/",$receiver))
     {
         $receiver = FALSE;
         $msg = "Invalid receiver name";
@@ -39,7 +39,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
             $sender = $messageinfo['id'];
 
              //send message
-            $send = mysqli_query($conn, "INSERT INTO messages(sender, receiver, message) VALUES('$sender','$receiver','$message')") or trigger_error("Message query failed");
+            $send = mysqli_query($conn, "INSERT INTO messages(sender, receiver, message) VALUES('$username','$receiver','$message')") or trigger_error("Message query failed");
             if($send)
             {
                 //message sent successfully
