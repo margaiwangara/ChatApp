@@ -46,7 +46,7 @@ include_once 'people.php';
                                     <td><?php echo $email[$key];?></td>
                                     <!--Add people and send messages-->
                                     <td><button type="button" id="add-known" name="add_known" class="btn btn-success">Known</button></td>
-                                    <td><a href="messages.php?username=<?php echo $username[$key];?>" target="_blank" id="send-message" name="send_message" class="btn btn-primary">Send Message</a></td>
+                                    <td><a href="messages.php?id=<?php echo $id;?>" target="_blank" id="send-message" name="send_message" class="btn btn-primary">Send Message</a></td>
                                 </tr>
                             <?php endforeach;?>
                         </tbody>

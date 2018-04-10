@@ -39,7 +39,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
             $sender = $messageinfo['id'];
 
              //send message
-            $send = mysqli_query($conn, "INSERT INTO messages(sender, receiver, message) VALUES('$username','$receiver','$message')") or trigger_error("Message query failed");
+            $send = mysqli_query($conn, "INSERT INTO messages(sender, receiver, message) VALUES('$sender','$receiver','$message')") or trigger_error("Message query failed");
             if($send)
             {
                 //message sent successfully

@@ -1,24 +1,29 @@
 $(document).ready(function()
 {
-    var polling = function(){
+    //var polling = function(){
         $.ajax({
             url:'receivemessage.php',
             dataType:'json',
-
+            
             success:function(data)
             {
-                sender = [];
+                //sender = [];
                 var sender = data.sender;
                 var receiver = data.receiver;
                 var message = data.message;
-
-                var holder;
-                $.each(message,function(key,value)
+                
+                if(message != "")
                 {
-                    holder += "<tr><th>" + sender[key] + "</th><th>" + receiver[key] + "</th></tr><tr><td>" + value + "</td></tr>"
-                    $("#user_messages").html(holder);
-                    //alert(value+" "+sender[key]+" "+receiver[key]);
-                });
+                    var holder;
+                    $.each(message, function (key, value) {
+                        holder += "<tr><th>" + sender[key] + " > " + receiver[key] + "</th></tr><tr><td>" + value + "</td></tr>"
+                        $("#user_messages").html(holder);
+                        //alert(value+" "+sender[key]+" "+receiver[key]);
+                    });
+                }
+                else
+                    $("#user_messages").html("There are no messages to display");
+                
                 //alert(sender);
                 //for(var i=0;i<10;i++)
                 //{
@@ -30,7 +35,7 @@ $(document).ready(function()
                 alert(xhr.status);
             }
         });
-    }
+    //}
 
     //setInterval(polling,100);
 });
