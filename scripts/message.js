@@ -12,7 +12,10 @@ $(document).ready(function()
 
             success:function(data)
             {
-                alert(data);
+                if(data == 1)
+                    $("#message").val("");
+                else
+                    $(".error_mess").html("Message not sent due a technical error. Please try again later");
             },
             error: function (xhr, ajaxOptions, thrownError)
             {

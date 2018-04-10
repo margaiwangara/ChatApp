@@ -8,7 +8,7 @@ require_once 'connectdb.php';
 
 //initialized variables
 $msg = FALSE;
-$senders = $receivers = $usermessages = FALSE;;
+$senders = $receivers = $usermessages = $name = $sent_date = FALSE;;
 if(isset($_SESSION['USERNAME']))
 {
     $owner_id = $_SESSION['USERNAME'];
@@ -40,26 +40,46 @@ if(isset($_SESSION['USERNAME']))
                 {
                     //assign names to values instead of numbers;
                     if($messagecontainer['sender'] == $guest)
-                        $messagecontainer['sender'] = $name;
+                        $messagecontainer['sender'] = ucwords($name);
                     else if($messagecontainer['sender'] == $_SESSION['USER_ID'])
-                        $messagecontainer['sender'] = $_SESSION['USERNAME'];
+                        $messagecontainer['sender'] = ucwords($_SESSION['USERNAME']);
 
-                    if($messagecontainer['receiver' == $guest])
-                        $messagecontainer['receiver'] = $name;
+                    if($messagecontainer['receiver'] == $guest)
+                        $messagecontainer['receiver'] = ucwords($name);
                     else if($messagecontainer['receiver'] == $_SESSION['USER_ID'])
-                        $messagecontainer['receiver'] = $_SESSION['USERNAME'];
+                        $messagecontainer['receiver'] = ucwords($_SESSION['USERNAME']);
 
                     //add values to containers
                     $senders [] = $messagecontainer['sender'];
                     $receivers [] = $messagecontainer['receiver'];
                     $usermessages [] = $messagecontainer['message'];
+
+                    //explode one
+                    $time = explode("-",$messagecontainer['created_at']);
+                    $year = $time[0];
+                    $month = $time[1];
+                    
+                    //explode two;
+                    $exp2 = explode(" ",$time[2]);
+                    $day = $exp2[0];
+
+                    //explode three
+                    $exp3 = explode(":",$exp2[1]);
+
+                    //vars
+                    $hour = $exp3[0];
+                    $min = $exp3[1];
+                    $sec = $exp3[2];
+                    
+                    $date = mktime($hour,$min,$sec,$month,$day,$year);
+                    $sent_date [] = date('j M',$date)."&nbsp;'".date('y',$date)." at ".date('h.ia',$date);
                 }
             }
             
         }else
             $msg = "There are no messages to display";
 
-        echo json_encode(array('sender' => $senders, 'receiver' => $receivers, 'message' => $msg));
+        echo json_encode(array('sender' => $senders, 'receiver' => $receivers, 'message' => $usermessages,'msg' => $msg,'user' => $_SESSION['USERNAME'],'created_at' => $sent_date));
     }
 }
     

@@ -43,10 +43,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
             if($send)
             {
                 //message sent successfully
-                $msg = "Message sent successfully";
+                $msg = 1;
             }
             else
-                $msg = "Message not sent";
+                $msg = 0;
             }
        
     }
