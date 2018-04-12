@@ -13,7 +13,10 @@ $(document).ready(function()
             success:function(data)
             {
                 if(data == 1)
+                {
                     $("#message").val("");
+                    $(".error_mess").html(" ");
+                }  
                 else
                     $(".error_mess").html("Message not sent due a technical error. Please try again later");
             },

@@ -2,6 +2,9 @@
 //session
 session_start();
 
+if(!isset($_SESSION['USERNAME']))
+    header("Location:registration.php");
+
 //include layout
 include_once 'layout.php';
 
